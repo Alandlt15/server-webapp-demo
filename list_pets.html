@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./index.css"/>
+    <link rel="stylesheet" type="text/css" href="./list_pets.css"/>
+    <title>List Pets</title>
+  </head>
+
+  <script>
+    const url = 'http://127.0.0.1:8000/';
+    function setIH(ID, text) { document.getElementById(ID).innerHTML = text; }
+
+    // executes once the page is loaded
+    document.addEventListener('DOMContentLoaded', function(){
+      function setIH(ID, text) { document.getElementById(ID).innerHTML = text; }
+      const request = new XMLHttpRequest();
+      request.responseType='json';
+      request.onload = (e) => { setIH("v1", request.response); };
+      request.open("GET", url, true);
+      request.send(null);
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+      const form1 = document.getElementById('form1');
+
+      form1.addEventListener('submit', function seeDetails(e) {
+        e.preventDefault();
+        const name = document.getElementById('petDetails');
+        const url = `http://127.0.0.1:8000/${name.value}`;
+
+        const request = new XMLHttpRequest();
+        request.responseType = 'json';
+        request.onload = (e) => { setIH("v2", JSON.stringify(request.response,null,2)); };
+        request.open("GET", url, true);
+        request.send(null);
+      })
+
+      const form2 = document.getElementById('form2');
+
+      form2.addEventListener('submit', function adoptPet(e) {
+        e.preventDefault();
+        const name = document.getElementById('adoptPet');
+        const url = `http://127.0.0.1:8000/${name.value}`;
+
+        const request = new XMLHttpRequest();
+        request.open("DELETE", url, true);
+        request.send(null);
+      })
+    });
+  </script>
+
+  <body>
+    <header><h1>List of Pets</h1></header>
+      <div class="container">
+        <div class="sidebar">
+            <div class="card">
+              <div class="card-title">
+                <h3>Pets:</h3>
+                <p id="v1"> text </p>
+              </div>
+            </div>
+        </div>
+
+        <div class="middle-content">
+            <div class="input">
+                <div class="input-title">
+                    <h4>Enter a name for details:</h4>
+                </div>
+                <form id="form1">
+                    <input type='text' placeholder="name" id="petDetails">
+                    <button type="submit">Enter</button>
+                </form>
+                <p id="v2"> text </p>
+            </div>
+
+            <div class="input">
+                <div class="input-title">
+                    <h4>Enter a name to adopt:</h4>
+                </div>
+                <form id="form2">
+                  <input type='text' placeholder="name" id="adoptPet">
+                  <button type="submit">Enter</button>
+              </form>
+            </div>
+        </div>
+      </div>
+  </body>
+
+
+</html>

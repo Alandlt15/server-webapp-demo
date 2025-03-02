@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="./index.css"/>
+    <title>Homepage</title>
+  </head>
+
+	<script>
+		function seePets() {
+			window.location.href='/list_pets.html';
+		}
+
+		function updateDetails() {
+			window.location.href='/update_details.html';
+		}
+
+		function addPet() {
+			window.location.href='/add_pet.html';
+		}
+	</script>
+
+  <body>
+    <header><h1>Home</h1></header>
+
+    <div class="container">
+
+        <div class="sidebar">
+            <div class="card">
+							<div class="card-title">
+                <h4>Adopted Pets</h4>
+							</div>
+            </div>
+        </div>
+
+        <div class="home-contents">
+            <div class="card">
+							<div class="card-title">
+                <h4>List Pets</h4>
+							</div>
+                <button class="button" onClick="seePets()">See Pets</button>
+            </div>
+            <div class="card">
+							<div class="card-title">
+                <h4>Update Pet Details</h4>
+							</div>
+                <button class="button" onClick="updateDetails()">Update Details</button>
+            </div>
+            <div class="card">
+							<div class="card-title">
+                <h4>Add New Pet</h4>
+							</div>
+                <button class="button" onClick="addPet()">Add a Pet</button>
+            </div>
+        </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="./index.css"/>
+    <title>Homepage</title>
+  </head>
+
+  <script>
+    const url = 'http://127.0.0.1:8000/';
+    document.addEventListener('DOMContentLoaded', function(){
+      const form1 = document.getElementById('form1');
+      form1.addEventListener('submit', function updateDetails(e) {
+        e.preventDefault();
+        const name = document.getElementById('petName');
+        const rawSpecies = document.getElementById('species');
+        const species = rawSpecies.value;
+        const rawBreed = document.getElementById('breed');
+        const breed = rawBreed.value;
+        const rawAge = document.getElementById('age');
+        const age = rawAge.value;
+        const url = `http://127.0.0.1:8000/${name.value}`;
+        
+        const request = new XMLHttpRequest();
+        const data = JSON.stringify({ species, breed, age: parseInt(age, 10) });
+        request.open("POST", url, true);
+        request.send(data);
+      });
+    });
+  </script>
+
+  <body>
+    <header><h1>Add a Pet</h1></header>
+
+    <div class="container">
+      <div class="middle-content">
+        <div class="input-title">
+          <h4>Enter details:</h4>
+        </div>
+
+        <form id="form1">
+            <input type="text" placeholder="name" id="petName">
+            <input type="text" placeholder="species" id="species">
+            <input type="text" placeholder="breed" id="breed">
+            <input type="text" placeholder="age" id="age">
+            <button type="submit">Enter</button>
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>
