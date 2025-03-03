@@ -27,24 +27,29 @@
         request.send(data);
       });
     });
+
+    function home() {
+	    window.location.href='/home.html';
+    }
   </script>
 
   <body>
-    <header><h1>Add a Pet</h1></header>
-
+    <header><h1>Add New Pet</h1></header><br>
+    <button id="back" onClick="home()">Back</button>
     <div class="container">
-      <div class="middle-content">
-        <div class="input-title">
-          <h4>Enter details:</h4>
-        </div>
-
-        <form id="form1">
+      <div class="contents">
+        <div class="card">
+          <div class="card-title">
+            <h4>Enter details:</h4>
+          </div>
+          <form id="form1">
             <input type="text" placeholder="name" id="petName">
             <input type="text" placeholder="species" id="species">
             <input type="text" placeholder="breed" id="breed">
             <input type="text" placeholder="age" id="age">
             <button type="submit">Enter</button>
         </form>
+        </div>
       </div>
     </div>
 

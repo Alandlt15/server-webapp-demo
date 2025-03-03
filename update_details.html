@@ -41,16 +41,20 @@
         request.send(data);
       })
     });
+
+    function home() {
+	    window.location.href='/home.html';
+    }
   </script>
 
   <body>
-    <header><h1>Update Details</h1></header>
-    
+    <header><h1>Update Details</h1></header><br>
+    <button id="back" onClick="home()">Back</button>
     <div class="container">
       <div class="contents">
         <div class="card">
-          <div class="card-title"
-            <h3>Pets:</h3>
+          <div class="card-title">
+            <h4>Pets:</h4>
             <p id="v1"> text </p>
           </div>
         </div>
